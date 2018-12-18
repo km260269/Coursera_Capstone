@@ -1,0 +1,10 @@
+from pandas.io.json import json_normalize
+url = ('https://foursquare.com/venues/explore?mode=share&near=Toronto%2C%20ON%2C%20Canada&nearGeoId=72057594044095801&q=restaurants&vne=43.77506%2C-79.231682&vsw=43.498262%2C-79.690361&share=1&rid=5c1879801ed2194bd276651c')
+url
+results = requests.get(url).json()
+results
+venues = results['response']['venues']
+
+# tranform venues into a dataframe
+dataframe = json_normalize(venues)
+dataframe.head()
